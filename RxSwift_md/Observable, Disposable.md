@@ -1,4 +1,4 @@
-## RxSwift 공부하기
+## Observable, Disposable
 
 ***RxSwift는 무엇인가?***
 
@@ -24,8 +24,6 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
 
 직접 RxSwift을 사용할 때 **Observable**이라는 레퍼런스 타입을 이용해서 값을 관찰하고 어떤 행위를 할 것입니다.
 
- 
-
 <br>
 
 ***RxSwift을 사용하는 이유?***
@@ -44,24 +42,20 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
 
   즉, Observable이 배출하는 항목에 대해 Observer가 반응하는 방식입니다.
 
-  <br>
-
   여기서 Observable은 세 가지 이벤트에 반응하게 됩니다.
 
   * `next` :  Observable은 어떤 항목을 배출하는데 이것이 바로 next이다. 이 스트림을 관찰 및 구독해서 원하는 행동을 한다.
-  * `error` : Observable이 값을 배출하다 에러가 발생하면 error을 배출하고 종료한다.
+* `error` : Observable이 값을 배출하다 에러가 발생하면 error을 배출하고 종료한다.
   * `complete` : 성공적으로 next 스트림이 완료되었을 때, complete 이벤트가 발생한다.
-
+  
   🔴 Error, Complete가 발생한 경우에 둘 다 Dispose가 불린다.
-
-  <br>
 
   ✔️ 간단한 예제
 
   ```swift
-  func fromArray(_ arr: [Int]) -> Observable<Int> {
+func fromArray(_ arr: [Int]) -> Observable<Int> {
     return Observable<Int>.create { observe -> Disposable in
-                                   for element in arr {
+                                 for element in arr {
                                      observer.onNext(element)
                                    }
   
@@ -98,8 +92,6 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
   Observable의 subscribe을 사용하면 모두 disposable을 반환하는데 이를 이용해서 해제시켜줄 수 있습니다. 작업을 취소하는 것도 가능해집니다.
   
   `DisposeBag` : 이 레퍼런스를 이용해 disposable 변수들을 담아두었다 활용할 수도 있습니다. DisposeBag 인스턴스를 생성하고 이 인스턴스가 소멸될 때, Disposebag안의 변수들이 dispose됩니다.
-  
-  <br>
   
   ✔️ 간단한 예제
   
