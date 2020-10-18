@@ -45,44 +45,44 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
   여기서 Observable은 세 가지 이벤트에 반응하게 됩니다.
 
   * `next` :  Observable은 어떤 항목을 배출하는데 이것이 바로 next이다. 이 스트림을 관찰 및 구독해서 원하는 행동을 한다.
-* `error` : Observable이 값을 배출하다 에러가 발생하면 error을 배출하고 종료한다.
+  * `error` : Observable이 값을 배출하다 에러가 발생하면 error을 배출하고 종료한다.
   * `complete` : 성공적으로 next 스트림이 완료되었을 때, complete 이벤트가 발생한다.
   
   🔴 Error, Complete가 발생한 경우에 둘 다 Dispose가 불린다.
-<br>
+  <br>
   
-✔️ 간단한 예제
-  
-```swift
-  func fromArray(_ arr: [Int]) -> Observable<Int> {
-  return Observable<Int>.create { observe -> Disposable in
-                                   for element in arr {
-                                     observer.onNext(element)
-                                   }
-  
-                                   observer.onCompleted()
-  
-                                   return Disposable.create()
-    }
-  }
-  
-  fromArray([1, 2, 5, 3, 4])
-  	.subscribe { 
-      event in
-      switch event {
-        case .next(let value): print(value)
-        case .error(let error): print(error)
-        case .completed: print("completed")
+  ✔️ 간단한 예제
+
+  ```swift
+    func fromArray(_ arr: [Int]) -> Observable<Int> {
+    return Observable<Int>.create { observe -> Disposable in
+                                     for element in arr {
+                                       observer.onNext(element)
+                                     }
+
+                                     observer.onCompleted()
+
+                                     return Disposable.create()
       }
-  	}
-  	.dispose()
-  // 1
-  // 2
-  // 5
-  // 3
-  // 4
-  // completed
-  ```
+    }
+
+    fromArray([1, 2, 5, 3, 4])
+      .subscribe { 
+        event in
+        switch event {
+          case .next(let value): print(value)
+          case .error(let error): print(error)
+          case .completed: print("completed")
+        }
+      }
+      .dispose()
+    // 1
+    // 2
+    // 5
+    // 3
+    // 4
+    // completed
+    ```
 
 <br>
 
