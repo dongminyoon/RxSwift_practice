@@ -3,19 +3,14 @@
 
 <br>
 
-#### 공부 정리
+#### 정리
 
-1️⃣ **RxSwift는 무엇인가, Observable, DisposeBag에 대하여**
+1️⃣ [**RxSwift는 무엇인가, Observable, Disposesable**](https://github.com/dongminyoon/RxSwift_practice/blob/main/RxSwift_md/Observable%2C%20Disposable.md)
 
 <br>
 
 #### 실습
 
 | 주차  | 내용 | 설명 |
-| :---: | :--: | :--: |
-| 1번째 |      |      |
-
-
-
- 
-
+| :---: | :----------: | :----------: |
+| 1번째 |  |      |

@@ -138,37 +138,3 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
   RxCocoa 요소의 경우에 DisposeBag에 담는 것이 아닌 바로 dispose을 실행하게 되면 Observer로부터 관찰을 받지 않겠다고 선언하는 것이기 때문에 주요 이벤트들이 동작하지 않고 바로 dispose()되었습니다.
   
   즉, UI 요소의 경우에는 DisposeBag에 담아두었다 UIViewController가 해제될 때, DisposeBag을 dispose 시키는 방식으로 사용하면 메모리 관리에 좋을 것 같습니다.
-
-<br>
-
-### RxSwift Operator
-
-* just
-
-  Observable에 들어온 값들을 그대로 내려준다. 즉, "스트링", ["예시", "문장"] 이런식으로 값이 들어오면 이 값들이 그대로 아래로 내려간다.
-
-* map
-
-  기존에 사용했던 Swift의 map 고차함수와 동일한 역할이다. 일정 값으로 바꾸어서 내려준다.
-
-* filter
-
-  어떤 값을 true, false 값으로 필터를 거쳐서 내려준다.
-
-* from
-
-  어떤 값을 순서대로 내려보내서 subscribe 구문을 실행한다.
-
-<br>
-
-* subscribe
-
-  이제 이것으로 인해 지금까지 Operating 하였던 값들을 사용할 지 사용하지 않을지 결정한다.
-
-* observeOn
-
-  이것을 사용해서 어떤 Thread에서 사용할 지 설정할 수 있다. 원하는 동작이 어느 Thread에서 사용하는 것이 좋은지 결정해서 바로 직전 동작에 `.observeOn` 메소드를 불러주면 된다.
-
-<br>
-
-🔴 Dispose가 불리는 경우는 **Complete 가 되는 경우**, **Error가 되는 경우**에도 불리게 된다.
