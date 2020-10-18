@@ -94,7 +94,6 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
   
   `DisposeBag` : 이 레퍼런스를 이용해 disposable 변수들을 담아두었다 활용할 수도 있습니다. DisposeBag 인스턴스를 생성하고 이 인스턴스가 소멸될 때, Disposebag안의 변수들이 dispose됩니다.
   <br>
-  
   ✔️ 간단한 예제
   
   ```swift
