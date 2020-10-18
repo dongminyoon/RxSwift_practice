@@ -49,13 +49,14 @@ Observer패턴을 아시나요? 바로 어떤 이벤트를 관찰하다 응답�
   * `complete` : 성공적으로 next 스트림이 완료되었을 때, complete 이벤트가 발생한다.
   
   🔴 Error, Complete가 발생한 경우에 둘 다 Dispose가 불린다.
-
-  ✔️ 간단한 예제
-
-  ```swift
-func fromArray(_ arr: [Int]) -> Observable<Int> {
-    return Observable<Int>.create { observe -> Disposable in
-                                 for element in arr {
+<br>
+  
+✔️ 간단한 예제
+  
+```swift
+  func fromArray(_ arr: [Int]) -> Observable<Int> {
+  return Observable<Int>.create { observe -> Disposable in
+                                   for element in arr {
                                      observer.onNext(element)
                                    }
   
@@ -92,6 +93,7 @@ func fromArray(_ arr: [Int]) -> Observable<Int> {
   Observable의 subscribe을 사용하면 모두 disposable을 반환하는데 이를 이용해서 해제시켜줄 수 있습니다. 작업을 취소하는 것도 가능해집니다.
   
   `DisposeBag` : 이 레퍼런스를 이용해 disposable 변수들을 담아두었다 활용할 수도 있습니다. DisposeBag 인스턴스를 생성하고 이 인스턴스가 소멸될 때, Disposebag안의 변수들이 dispose됩니다.
+  <br>
   
   ✔️ 간단한 예제
   
