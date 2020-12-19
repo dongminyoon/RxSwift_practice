@@ -15,21 +15,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let randomGenerator = Observable<Int>.create { ob in
-            ob.onNext(Int.random(in: 0...100))
-            ob.onCompleted()
-            return Disposables.create()
-        }
+        let randomGenerator = BehaviorSubject(value: 10)
+        randomGenerator.asObserver()
+            .onNext(Int.random(in: 1...100))
         
-        randomGenerator.subscribe(onNext: { ranNum in
-            print("ob1 : \(ranNum)")
-        })
-        .dispose()
+        randomGenerator.asObservable()
+            .subscribe(onNext: { ranNum in
+                print("ob1 : \(ranNum)")
+            })
+            .dispose()
         
-        randomGenerator.subscribe(onNext: { ranNum in
-            print("ob2 : \(ranNum)")
-        })
-        .dispose()
+        randomGenerator.asObservable()
+            .subscribe(onNext: { ranNum in
+                print("ob2 : \(ranNum)")
+            })
+            .dispose()
     }
 
 
