@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		954A6712FA63EC56A88ED0D9 /* Pods_RxSwift_2stepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF9729AA7BF17D708F4C571 /* Pods_RxSwift_2stepTests.framework */; };
 		95EAE16CABB1315AD12E9340 /* Pods_RxSwift_2step_RxSwift_2stepUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD0B02CB5FCC72A6ACF5FB8 /* Pods_RxSwift_2step_RxSwift_2stepUITests.framework */; };
+		9D0AC72B258E615100CE023C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AC72A258E615100CE023C /* ViewModel.swift */; };
 		9D8EAAA2256D3A680066B3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EAAA1256D3A680066B3C7 /* AppDelegate.swift */; };
 		9D8EAAA4256D3A680066B3C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EAAA3256D3A680066B3C7 /* SceneDelegate.swift */; };
 		9D8EAAA6256D3A680066B3C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8EAAA5256D3A680066B3C7 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		212536088C07DDB728A52E71 /* Pods-RxSwift_2step-RxSwift_2stepUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_2step-RxSwift_2stepUITests.release.xcconfig"; path = "Target Support Files/Pods-RxSwift_2step-RxSwift_2stepUITests/Pods-RxSwift_2step-RxSwift_2stepUITests.release.xcconfig"; sourceTree = "<group>"; };
 		29656F0E9B0C1706C8C55D94 /* Pods-RxSwift_2step-RxSwift_2stepUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_2step-RxSwift_2stepUITests.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift_2step-RxSwift_2stepUITests/Pods-RxSwift_2step-RxSwift_2stepUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF9729AA7BF17D708F4C571 /* Pods_RxSwift_2stepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_2stepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D0AC72A258E615100CE023C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9D8EAA9E256D3A680066B3C7 /* RxSwift_2step.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_2step.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8EAAA1256D3A680066B3C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8EAAA3256D3A680066B3C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				9D8EAAA1256D3A680066B3C7 /* AppDelegate.swift */,
 				9D8EAAA3256D3A680066B3C7 /* SceneDelegate.swift */,
 				9D8EAAA5256D3A680066B3C7 /* ViewController.swift */,
+				9D0AC72A258E615100CE023C /* ViewModel.swift */,
 				9D8EAAA7256D3A680066B3C7 /* Main.storyboard */,
 				9D8EAAAA256D3A6C0066B3C7 /* Assets.xcassets */,
 				9D8EAAAC256D3A6C0066B3C7 /* LaunchScreen.storyboard */,
@@ -165,7 +168,6 @@
 				08ADCAA2009AA5591C253B3D /* Pods-RxSwift_2stepTests.debug.xcconfig */,
 				012C2DFCE572395D6EBF47CC /* Pods-RxSwift_2stepTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -409,6 +411,7 @@
 			files = (
 				9D8EAAA6256D3A680066B3C7 /* ViewController.swift in Sources */,
 				9D8EAAA2256D3A680066B3C7 /* AppDelegate.swift in Sources */,
+				9D0AC72B258E615100CE023C /* ViewModel.swift in Sources */,
 				9D8EAAA4256D3A680066B3C7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
