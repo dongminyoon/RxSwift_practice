@@ -7,7 +7,7 @@
 
 1️⃣ [**RxSwift는 무엇인가, Observable, Disposesable**](https://github.com/dongminyoon/RxSwift_practice/blob/main/RxSwift_md/Observable%2C%20Disposable.md)
 
-2️⃣ **[Subject(BehaviorSubject, PublishSubject, ReplaySubject)]()**
+2️⃣ **[Subject(BehaviorSubject, PublishSubject, ReplaySubject)](https://github.com/dongminyoon/RxSwift_practice/blob/main/RxSwift_md/Subject.md)**
 
 <br>
 
