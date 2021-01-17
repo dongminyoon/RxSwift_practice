@@ -6,6 +6,7 @@ target 'RxSwift_3step' do
   use_frameworks!
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Moya/RxSwift', '~> 14.0'
   # Pods for RxSwift_3step
   
 
