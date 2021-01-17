@@ -26,7 +26,22 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dEL-th-C2a" id="IeA-ng-aob">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x39-1t-3Mg">
+                                                    <rect key="frame" x="28" y="31.666666666666671" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="x39-1t-3Mg" firstAttribute="centerY" secondItem="IeA-ng-aob" secondAttribute="centerY" id="eVs-0d-nhi"/>
+                                                <constraint firstItem="x39-1t-3Mg" firstAttribute="leading" secondItem="IeA-ng-aob" secondAttribute="leadingMargin" constant="8" id="jNU-sn-tW0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="x39-1t-3Mg" id="V5F-Kt-NHZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

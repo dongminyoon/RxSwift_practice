@@ -14,11 +14,11 @@ extension String {
     }
 }
 
-enum SessionResources {
+enum Github {
     case userRepo(name: String)
 }
 
-extension SessionResources: TargetType {
+extension Github: TargetType {
     /* 통신을 위한 Base URL */
     var baseURL: URL {
         return URL(string: "https://api.github.com")!

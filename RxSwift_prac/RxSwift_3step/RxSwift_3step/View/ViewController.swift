@@ -7,56 +7,50 @@
 
 import UIKit
 import Moya
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     @IBOutlet weak var resultTableView: UITableView!
     
-    private let gitSearchService = GithubSearchService()
-    
-    var cancellableBag: [Cancellable] = []
+    let disposeBag = DisposeBag()
+    let viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initSearchBar()
+        
+        setRx()
+        bindTableView()
+    }
+    
+    private func initSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationController?.navigationBar.prefersLargeTitles = true
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
         
         navigationItem.title = "Github Search"
-
-        resultTableView.delegate = self
-        resultTableView.dataSource = self
-    }
-}
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let customCell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else { return UITableViewCell() }
-        if indexPath.row % 2 == 0 {
-            customCell.backgroundColor = .red
-        } else {
-            customCell.backgroundColor = .yellow
-        }
-        return customCell
+    private func setRx() {
+        navigationItem.searchController?.searchBar.rx
+            .text
+            .orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .bind(to: viewModel.input.userName)
+            .disposed(by: disposeBag)
     }
-}
-
-extension ViewController: UITableViewDelegate {
     
-}
-
-extension ViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let cancellable = gitSearchService.search(userName: searchText) { result in
-            print(result)
-        }
-        
-        cancellableBag.append(cancellable)
+    private func bindTableView() {
+        viewModel.output.gitRepository
+            .asDriver(onErrorJustReturn: [])
+            .drive(resultTableView.rx.items) { tableView, index, item -> UITableViewCell in
+                guard let customCell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier) as? CustomCell else { return UITableViewCell() }
+                customCell.titleLabel.text = item.full_name
+                return customCell
+            }
+            .disposed(by: disposeBag)
     }
 }

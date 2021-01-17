@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		47759EEC32FC279BDA523C5D /* Pods_RxSwift_3step_RxSwift_3stepUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B681C8B54EC31F66476B8277 /* Pods_RxSwift_3step_RxSwift_3stepUITests.framework */; };
 		7716B9B4DE28108BCBBAD4E7 /* Pods_RxSwift_3stepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCE492178A70C46C21CC967 /* Pods_RxSwift_3stepTests.framework */; };
+		9D50596D25B48A78005F4A88 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50596C25B48A78005F4A88 /* ViewModel.swift */; };
 		9D696B0D25B465C1002061E7 /* GitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D696B0C25B465C1002061E7 /* GitRepository.swift */; };
 		9D696B1625B465F0002061E7 /* GithubSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D696B1525B465F0002061E7 /* GithubSearchService.swift */; };
-		9D696B1E25B467F4002061E7 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D696B1D25B467F4002061E7 /* SessionManager.swift */; };
-		9D696B2625B469DD002061E7 /* SessionResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D696B2525B469DD002061E7 /* SessionResources.swift */; };
+		9D696B2625B469DD002061E7 /* Github.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D696B2525B469DD002061E7 /* Github.swift */; };
 		9D72CAF225B476E30041DBD2 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D72CAF125B476E30041DBD2 /* NetworkResult.swift */; };
 		9D9CC77025B2B286004A5D17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9CC76F25B2B286004A5D17 /* AppDelegate.swift */; };
 		9D9CC77225B2B286004A5D17 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9CC77125B2B286004A5D17 /* SceneDelegate.swift */; };
@@ -49,10 +49,10 @@
 		65C0866171BD4A00DBC517D9 /* Pods-RxSwift_3step-RxSwift_3stepUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_3step-RxSwift_3stepUITests.release.xcconfig"; path = "Target Support Files/Pods-RxSwift_3step-RxSwift_3stepUITests/Pods-RxSwift_3step-RxSwift_3stepUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7CB98A8A9D4AD7E5B42DD1A2 /* Pods-RxSwift_3step-RxSwift_3stepUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_3step-RxSwift_3stepUITests.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift_3step-RxSwift_3stepUITests/Pods-RxSwift_3step-RxSwift_3stepUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B05B6A310C8C3D11BA63524 /* Pods_RxSwift_3step.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_3step.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D50596C25B48A78005F4A88 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9D696B0C25B465C1002061E7 /* GitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitRepository.swift; sourceTree = "<group>"; };
 		9D696B1525B465F0002061E7 /* GithubSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchService.swift; sourceTree = "<group>"; };
-		9D696B1D25B467F4002061E7 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		9D696B2525B469DD002061E7 /* SessionResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResources.swift; sourceTree = "<group>"; };
+		9D696B2525B469DD002061E7 /* Github.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github.swift; sourceTree = "<group>"; };
 		9D72CAF125B476E30041DBD2 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		9D9CC76C25B2B286004A5D17 /* RxSwift_3step.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_3step.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9CC76F25B2B286004A5D17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +137,7 @@
 		9D696B0A25B465A7002061E7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9D50596C25B48A78005F4A88 /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -152,9 +153,8 @@
 		9D696B1425B465E0002061E7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				9D696B1D25B467F4002061E7 /* SessionManager.swift */,
 				9D696B1525B465F0002061E7 /* GithubSearchService.swift */,
-				9D696B2525B469DD002061E7 /* SessionResources.swift */,
+				9D696B2525B469DD002061E7 /* Github.swift */,
 				9D72CAF125B476E30041DBD2 /* NetworkResult.swift */,
 			);
 			path = Network;
@@ -456,7 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D696B2625B469DD002061E7 /* SessionResources.swift in Sources */,
+				9D50596D25B48A78005F4A88 /* ViewModel.swift in Sources */,
+				9D696B2625B469DD002061E7 /* Github.swift in Sources */,
 				9D9CC77425B2B286004A5D17 /* ViewController.swift in Sources */,
 				9D696B0D25B465C1002061E7 /* GitRepository.swift in Sources */,
 				9D72CAF225B476E30041DBD2 /* NetworkResult.swift in Sources */,
@@ -464,7 +465,6 @@
 				9D9CC7B725B2CB4B004A5D17 /* CustomCell.swift in Sources */,
 				9D9CC77225B2B286004A5D17 /* SceneDelegate.swift in Sources */,
 				9D696B1625B465F0002061E7 /* GithubSearchService.swift in Sources */,
-				9D696B1E25B467F4002061E7 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

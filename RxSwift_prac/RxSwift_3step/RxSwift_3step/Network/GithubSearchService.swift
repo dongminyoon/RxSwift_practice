@@ -9,26 +9,33 @@ import Foundation
 import Moya
 import RxSwift
 
-typealias Handler = ((NetworkResult<Codable>) -> Void)
-
 final class GithubSearchService {
-    private let provider: MoyaProvider<SessionResources>
+    private let provider: MoyaProvider<Github>
 
-    init(provider: MoyaProvider<SessionResources> = MoyaProvider<SessionResources>()) {
+    init(provider: MoyaProvider<Github> = MoyaProvider<Github>()) {
         self.provider = provider
     }
     
-    func search(userName: String, completion: @escaping Handler) -> Cancellable {
-        return provider.request(.userRepo(name: userName)) { result in
-            switch result {
-            case .success(let response):
-                print(response.response?.statusCode)
-                print(response.data)
-                print(try? response.mapJSON())
-            case .failure(let error):
-                print(error.errorCode)
-                print(error.localizedDescription)
+    func search(userName: String) -> Observable<[GitRepository]> {
+        if userName == "" { return Observable.create() { ob in
+            ob.onNext([])
+            ob.onCompleted()
+            return Disposables.create()
+        }
+        }
+        return Observable.create() { [weak self] ob in
+            self?.provider.request(.userRepo(name: userName)) { result in
+                switch result {
+                case .success(let response):
+                    let decoder = try? JSONDecoder().decode([GitRepository].self, from: response.data)
+                    ob.onNext(decoder ?? [])
+                case .failure(let error):
+                    ob.onError(error)
+                }
+                
+                ob.onCompleted()
             }
+            return Disposables.create()
         }
     }
 }
