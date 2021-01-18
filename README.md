@@ -1,5 +1,7 @@
-# RxSwift Practice
-***RxSwift***을 이용한 Reactive 프로그래밍 연습 🧑🏻‍💻
+## RxSwift Practice
+<p align="center"><img src="./images/rxswift.png" width="300px"></p>
+
+<p align="center"><b><i>RxSwift</i></b>을 이용한 Reactive 프로그래밍 연습</p>
 
 <br>
 
