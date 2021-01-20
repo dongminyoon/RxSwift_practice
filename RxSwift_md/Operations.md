@@ -270,11 +270,96 @@
 
 ---
 
-1. `concat`
+1. `combineLatest`
 
+   * 두 개 이상의 Observable 중, 가장 최근의 이벤트가 방출될 때 이벤트를 병합하여 방출한다. 
+   * 만약 Observable 중, 어느 하나라도 방출하지 않은 Observable이 있다면 작동하지 않는다.
 
+   <img src="../images/combinelatest.png" width="700px">
 
+   ```swift
+   let first = Observable.from([1, 2, 3])
+   let secont = Observable.from(["A", "B", "C"])
+   
+   Observable.combineLatest(first, second)
+       .subscribe(onNext: {
+           print("\($0) + \($1)")
+       })
+   	  .disposed(by: disposeBag)
+   
+   /* Prints:
+   1 + A
+   2 + A
+   2 + B
+   3 + B
+   3 + C
+   */
+   ```
 
+   <br>
+
+2. `zip`
+
+   * 두 개 이상의 Observable 중, 이벤트를 방출하면 순서가 맞는 쌍끼리 하나의 이벤트를 방출한다.
+   * `combineLatest` 최신의 이벤트를 이전의 이벤트와 합치지만 `zip`은 순서가 맞는 쌍끼리 엮어서 방출한다.
+
+   <img src="../images/zip.png" width="700px">
+
+   ```swift
+   let first = Observable.from([1, 2, 3])
+   let secont = Observable.from(["A", "B", "C"])
+   
+   Observable.zip(first, second)
+       .subscribe(onNext: {
+           print("\($0) + \($1)")
+       })
+   	  .disposed(by: disposeBag)
+   
+   /* Prints:
+   1 + A
+   2 + B
+   3 + C
+   */
+   ```
+
+   <br>
+
+3. `merge`
+
+   * 여러 개의 Observable을 합치지만 위의 두 Operator와는 다르게 각각의 이벤트를 수신할 수 있다.
+   * 여러 Observable들이 공동의 로직을 수행해야할 때 사용할 수 있다.
+
+   <img src="../images/merge.png" width="700px">
+
+   ```swift
+   let first = Observable.from([1, 2, 3])
+   let secont = Observable.from([4, 5, 6])
+   
+   Observable.merge(first, second)
+       .subscribe(onNext: {
+           print("\($0)")
+       })
+   	  .disposed(by: disposeBag)
+   
+   /* Prints:
+   1
+   4
+   2
+   5
+   3
+   6
+   */
+   ```
+
+<br>
+
+<br>
+
+이 외에도 다양한 Operator들이 존재한다.
+
+각각의 상황에서 맞는 Operator들이 존재하면 더 찾아서 공부하며 진행하면 될 것 같다.
+
+우선은 자주 사용되고 자주 본 Operator들만 정리해보았다 :)
 
 
 
