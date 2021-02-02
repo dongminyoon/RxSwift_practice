@@ -45,7 +45,8 @@ class ViewController: UIViewController {
     
     func bindTableView() {
         viewModel.output.carsList
-            .bind(to: tableView.rx.items) { tableView, indexPath, item in
+            .asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items) { tableView, indexPath, item in
                 guard let carCell = tableView.dequeueReusableCell(withIdentifier: CarCell.identifier) as? CarCell else { return UITableViewCell() }
                 let carDTO = item.makeCarDTO()
                 carCell.configure(from: carDTO)
