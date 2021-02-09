@@ -9,14 +9,18 @@ import Foundation
 import Moya
 import RxSwift
 
-final class GithubSearchService {
+protocol GithubSearchServiceProtocol {
+    func searchRepos(of userName: String) -> Observable<[GitRepository]>
+}
+
+final class GithubSearchService: GithubSearchServiceProtocol {
     private let provider: MoyaProvider<Github>
 
     init(provider: MoyaProvider<Github> = MoyaProvider<Github>()) {
         self.provider = provider
     }
     
-    func search(userName: String) -> Observable<[GitRepository]> {
+    func searchRepos(of userName: String) -> Observable<[GitRepository]> {
         if userName == "" { return Observable.create() { ob in
             ob.onNext([])
             ob.onCompleted()
@@ -30,7 +34,8 @@ final class GithubSearchService {
                     let decoder = try? JSONDecoder().decode([GitRepository].self, from: response.data)
                     ob.onNext(decoder ?? [])
                 case .failure(let error):
-                    ob.onError(error)
+                    print(error)
+                    ob.onNext([])
                 }
                 
                 ob.onCompleted()

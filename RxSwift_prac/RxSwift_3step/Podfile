@@ -12,8 +12,10 @@ target 'RxSwift_3step' do
 
 
   target 'RxSwift_3stepTests' do
-    inherit! :search_paths
     # Pods for testing
+    pod 'RxTest'
+    pod 'Nimble'
+    pod 'RxBlocking'
   end
 
   target 'RxSwift_3stepUITests' do

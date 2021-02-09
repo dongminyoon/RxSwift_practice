@@ -43,7 +43,10 @@ extension Github: TargetType {
      네트워킹 요청대신, 가짜 객체를 반환하게 할 수 있는 것
      */
     var sampleData: Data {
-        return "".data(using: .utf8)!
+        switch self {
+        case .userRepo(let name):
+            return "[{\"name\": \"\(name)\"}]".data(using: .utf8)!
+        }
     }
     
     /* 각 요청별 어떤 request 형태로 보낼지 */

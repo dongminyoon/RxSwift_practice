@@ -12,6 +12,7 @@ target 'MVVMPrac' do
   target 'MVVMPracTests' do
     inherit! :search_paths
     # Pods for testing
+
   end
 
   target 'MVVMPracUITests' do
