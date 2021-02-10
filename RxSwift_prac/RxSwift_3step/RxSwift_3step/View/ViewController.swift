@@ -38,6 +38,13 @@ class ViewController: UIViewController {
         
         setRx()
         bindTableView()
+        
+        Single<Int>.create {
+            single in
+            single(.success(10))
+            return Disposables.create()
+        }
+        
     }
     
     private func initSearchBar() {
